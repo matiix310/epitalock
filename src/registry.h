@@ -1,7 +1,7 @@
 #ifndef REGISTRY_H
 #define REGISTRY_H
 
-#include <wayland-client.h>
+#include "wayland-client.h"
 
 struct state {
     struct wl_compositor *compositor;

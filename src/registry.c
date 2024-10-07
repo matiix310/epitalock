@@ -2,8 +2,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <wayland-client.h>
 
+#include "wayland-client.h"
 #include "monitor.h"
 #include "ext-session-lock.h"
 

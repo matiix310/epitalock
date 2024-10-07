@@ -1,7 +1,7 @@
 #ifndef MONITOR_H
 #define MONITOR_H
 
-#include <wayland-client.h>
+#include "wayland-client.h"
 
 #define MAX_NAME_SIZE 512
 #define MAX_MONITORS 42

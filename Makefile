@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Iprotocols
-LDFLAGS = -lwayland-client -lm
+CFLAGS = -Iprotocols -Iinclude
+LDFLAGS = -Llib -l:libwayland-client.so.0.23.90 -lm
 
 SRC = $(wildcard src/*.c) protocols/ext-session-lock.c
 OBJ = ${SRC:.c=.o}

@@ -2,9 +2,9 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <wayland-client.h>
 #include <sys/mman.h>
 
+#include "wayland-client.h"
 #include "ext-session-lock.h"
 #include "monitor.h"
 #include "surface.h"
