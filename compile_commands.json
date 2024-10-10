@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": [
+      "/run/current-system/sw/bin/gcc",
+      "-Iprotocols",
+      "-I/nix/store/87igb9wfmdgjnflxcqv1q5319p9vlb5h-wayland-1.22.0-dev/include",
+      "-c",
+      "-o",
+      "src/epilock.o",
+      "src/epilock.c"
+    ],
+    "directory": "/home/lucas.stephan/epitalock",
+    "file": "/home/lucas.stephan/epitalock/src/epilock.c",
+    "output": "/home/lucas.stephan/epitalock/src/epilock.o"
+  },
+  {
+    "arguments": [
+      "/run/current-system/sw/bin/gcc",
+      "-Iprotocols",
+      "-I/nix/store/87igb9wfmdgjnflxcqv1q5319p9vlb5h-wayland-1.22.0-dev/include",
+      "-c",
+      "-o",
+      "src/session-locker.o",
+      "src/session-locker.c"
+    ],
+    "directory": "/home/lucas.stephan/epitalock",
+    "file": "/home/lucas.stephan/epitalock/src/session-locker.c",
+    "output": "/home/lucas.stephan/epitalock/src/session-locker.o"
+  }
+]

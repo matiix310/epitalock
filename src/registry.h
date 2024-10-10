@@ -3,12 +3,20 @@
 
 #include <wayland-client.h>
 
-struct state {
+#include "monitor.h"
+
+struct state
+{
     struct wl_compositor *compositor;
     struct ext_session_lock_manager_v1 *session_lock_manager;
     struct wl_shm *shm;
+    struct wl_display *display;
 };
 
-int setup_registry(struct state *state);
+extern struct state state;
+extern size_t monitor_count;
+extern struct monitor monitors[MAX_MONITORS];
 
-#endif //REGISTRY_H
+int setup_registry();
+
+#endif // REGISTRY_H

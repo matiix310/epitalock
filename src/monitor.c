@@ -1,23 +1,22 @@
 #include "monitor.h"
 
 #include <assert.h>
-#include <stdio.h>
 #include <string.h>
 
-size_t monitor_count;
+size_t monitor_count = 0;
 struct monitor monitors[MAX_MONITORS];
 
-static void HandleMonitorGeometry(
-    void* data, struct wl_output* wl_output, int32_t x, int32_t y,
-    int32_t physical_width, int32_t physical_height, int32_t subpixel,
-    const char* make, const char* model, int32_t transform)
+static void HandleMonitorGeometry(void *data, struct wl_output *wl_output,
+                                  int32_t x, int32_t y, int32_t physical_width,
+                                  int32_t physical_height, int32_t subpixel,
+                                  const char *make, const char *model,
+                                  int32_t transform)
 {
     monitors[monitor_count].x = x;
     monitors[monitor_count].y = y;
 }
 
-static void HandleMonitorPixelContents(void* data,
-                                       struct wl_output* wl_output,
+static void HandleMonitorPixelContents(void *data, struct wl_output *wl_output,
                                        uint32_t flags, int32_t width,
                                        int32_t height, int32_t refresh)
 {
@@ -25,33 +24,31 @@ static void HandleMonitorPixelContents(void* data,
     monitors[monitor_count].height = height;
 }
 
-static void HandleMonitorInformationSent(void* data,
-                                         struct wl_output* wl_output)
+static void HandleMonitorInformationSent(void *data,
+                                         struct wl_output *wl_output)
 {
     monitors[monitor_count].wl_output = wl_output;
     monitor_count++;
     assert(monitor_count < MAX_MONITORS);
-    printf("COUCOU\n");
 }
 
-static void HandleMonitorScale(void* data,
-                               struct wl_output* wl_output,
+static void HandleMonitorScale(void *data, struct wl_output *wl_output,
                                int32_t factor)
 {
     monitors[monitor_count].scale = factor;
 }
 
-static void HandleMonitorName(void* data, struct wl_output* wl_output,
-                              const char* name)
+static void HandleMonitorName(void *data, struct wl_output *wl_output,
+                              const char *name)
 {
     strncpy(monitors[monitor_count].name, name, MAX_NAME_SIZE);
 }
 
-static void HandleMonitorDescription(void* data,
-                                     struct wl_output* wl_output,
-                                     const char* description)
+static void HandleMonitorDescription(void *data, struct wl_output *wl_output,
+                                     const char *description)
 {
     // No operation.
+    create_surface();
 }
 
 const struct wl_output_listener monitor_listener = {
@@ -62,8 +59,3 @@ const struct wl_output_listener monitor_listener = {
     HandleMonitorName,
     HandleMonitorDescription
 };
-
-size_t getMonitors(struct monitor **monitorList) {
-    *monitorList = monitors;
-    return monitor_count;
-}

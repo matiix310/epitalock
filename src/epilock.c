@@ -1,20 +1,21 @@
-#include <stdlib.h>
 #include <err.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 #include <unistd.h>
 
 #include "registry.h"
 #include "session-locker.h"
 
+struct state state = { 0 };
+
 int main(void)
 {
     sleep(1);
-    struct state state = { 0 };
 
     // get all the objects from the wayland server
-    if (!setup_registry(&state))
-        errx(EXIT_FAILURE, "Can't fetch the required interfaces from your wayland server!");
+    if (!setup_registry())
+        errx(EXIT_FAILURE,
+             "Can't fetch the required interfaces from your wayland server!");
 
     // lock the session
     sleep(2);
